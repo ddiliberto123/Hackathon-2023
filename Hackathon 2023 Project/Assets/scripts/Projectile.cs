@@ -1,15 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    Vector2 position;
-    Vector2 velocity;
+    UnityEngine.Vector2 position;
+    UnityEngine.Vector2 velocity;
+    UnityEngine.Vector2 acceleration;
+    UnityEngine.Vector2 netForce;
+    public float mass;
     public float speed;
     float directon;
     GameObject player;
+
+    //Newton's gravitational constant
+    float G = 6.674f * Mathf.Pow(10,-11);
+
+    //list of active planets
+    public GameObject[] planets;
 
     public int xBound;
     public int yBound;
@@ -21,14 +31,31 @@ public class Projectile : MonoBehaviour
 
         //set velocity of projectile using position of player
         directon = Mathf.Atan2(player.transform.position.y, player.transform.position.x);
-        velocity = new Vector2(speed * Mathf.Cos(directon), speed * Mathf.Sin(directon));
+        velocity = new UnityEngine.Vector2(speed * Mathf.Cos(directon), speed * Mathf.Sin(directon));
 
         transform.position = position;
     }
 
     void Update()
     {
-        //increment position using velocity
+        netForce = new UnityEngine.Vector2(0,0);
+        if (planets.Length > 0)
+        {
+            //iterate over list of planets and apply gravitational force from each to the projectile using Newton's law of gravity
+            for (int i = 0; i < planets.Length; i++)
+            {
+                netForce.x += G * mass * planets[i].GetComponent<Planet>().mass / Mathf.Pow(planets[i].transform.position.x - position.x, 2);
+                netForce.y += G * mass * planets[i].GetComponent<Planet>().mass / Mathf.Pow(planets[i].transform.position.y - position.y, 2);
+            }
+        }
+
+        //set acceleration using F=ma
+        acceleration.x = netForce.x / mass;
+        acceleration.y = netForce.y / mass;
+
+        //set velocity and position
+        velocity.x += acceleration.x * Time.deltaTime;
+        velocity.y += acceleration.y * Time.deltaTime;
         position.x += velocity.x * Time.deltaTime;
         position.y += velocity.y * Time.deltaTime;
         transform.position = position;
