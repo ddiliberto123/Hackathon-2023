@@ -12,13 +12,14 @@ public class Planet : MonoBehaviour
     string planetName;
     public Sprite sprite;
 
-    int xBound;
-    int yBound;
+    int xBound = 5;
+    int yBound = 5;
 
     void Start()
     {
         //set random position
-        position = new Vector2(UnityEngine.Random.Range(-xBound, xBound), UnityEngine.Random.Range(-yBound, yBound));
+        position = new Vector2(UnityEngine.Random.Range((float)-xBound, (float)xBound), UnityEngine.Random.Range((float)-yBound, (float)yBound));
+        transform.position = position;
 
         if (planetName == "Mars")
         {
@@ -36,6 +37,12 @@ public class Planet : MonoBehaviour
             mass = 300;
             radius = 5f;
         }
+        else
+        {
+            mass = 100;
+            radius = 3;
+        }
+        transform.localScale = new Vector2(radius, radius);
     }
 
     void Update()
