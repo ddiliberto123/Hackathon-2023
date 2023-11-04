@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
     UnityEngine.Vector2 position;
     UnityEngine.Vector2 velocity;
     UnityEngine.Vector2 acceleration;
-    UnityEngine.Vector2 force;
+    UnityEngine.Vector2 netForce;
     public float mass;
     public float speed;
     float directon;
@@ -38,19 +38,20 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
+        netForce = new UnityEngine.Vector2(0,0);
         if (planets.Length > 0)
         {
             //iterate over list of planets and apply gravitational force from each to the projectile using Newton's law of gravity
             for (int i = 0; i < planets.Length; i++)
             {
-                force.x = G * mass * planets[i].GetComponent<Planet>().mass / Mathf.Pow(planets[i].transform.position.x - position.x, 2);
-                force.y = G * mass * planets[i].GetComponent<Planet>().mass / Mathf.Pow(planets[i].transform.position.y - position.y, 2);
+                netForce.x += G * mass * planets[i].GetComponent<Planet>().mass / Mathf.Pow(planets[i].transform.position.x - position.x, 2);
+                netForce.y += G * mass * planets[i].GetComponent<Planet>().mass / Mathf.Pow(planets[i].transform.position.y - position.y, 2);
             }
         }
 
         //set acceleration using F=ma
-        acceleration.x = force.x / mass;
-        acceleration.y = force.y / mass;
+        acceleration.x = netForce.x / mass;
+        acceleration.y = netForce.y / mass;
 
         //set velocity and position
         velocity.x = acceleration.x * Time.deltaTime;
