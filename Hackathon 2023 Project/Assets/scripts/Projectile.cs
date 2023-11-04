@@ -39,14 +39,19 @@ public class Projectile : MonoBehaviour
     {
         if (planets.Length > 0)
         {
+            //iterate over list of planets and apply gravitational force from each to the projectile using Newton's law of gravity
             for (int i = 0; i < planets.Length; i++)
             {
                 force.x = G * mass * planets[i].GetComponent<Planet>().mass / Mathf.Pow(planets[i].transform.position.x - position.x, 2);
                 force.y = G * mass * planets[i].GetComponent<Planet>().mass / Mathf.Pow(planets[i].transform.position.y - position.y, 2);
             }
         }
+
+        //set acceleration using F=ma
         acceleration.x = force.x / mass;
         acceleration.y = force.y / mass;
+
+        //set velocity and position
         velocity.x = acceleration.x * Time.deltaTime;
         velocity.y = acceleration.y * Time.deltaTime;
         position.x += velocity.x * Time.deltaTime;
