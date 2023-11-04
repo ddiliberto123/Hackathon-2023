@@ -15,8 +15,8 @@ public class Projectile : MonoBehaviour
     float directon;
     GameObject player;
 
-    //G controls the global strength of gravity
-    float G = 1;
+    //Newton's gravitational constant
+    float G = 6.674f * Mathf.Pow(10,-11);
 
     //list of active planets
     public GameObject[] planets;

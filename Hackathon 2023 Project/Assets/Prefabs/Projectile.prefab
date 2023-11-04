@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed619f45d3bf82543be32a5f5d9efb46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 1
+  mass: 1000
   speed: 2
   planets: []
   xBound: 4
