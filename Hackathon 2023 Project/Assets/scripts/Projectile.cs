@@ -54,8 +54,8 @@ public class Projectile : MonoBehaviour
         acceleration.y = netForce.y / mass;
 
         //set velocity and position
-        velocity.x = acceleration.x * Time.deltaTime;
-        velocity.y = acceleration.y * Time.deltaTime;
+        velocity.x += acceleration.x * Time.deltaTime;
+        velocity.y += acceleration.y * Time.deltaTime;
         position.x += velocity.x * Time.deltaTime;
         position.y += velocity.y * Time.deltaTime;
         transform.position = position;
