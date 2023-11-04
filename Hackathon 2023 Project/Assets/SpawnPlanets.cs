@@ -14,8 +14,8 @@ public class SpawnPlanets : MonoBehaviour
 
     void FixedUpdate()
     {
-        if ((int)Time.time % timeInterval == 0)
-        {
+        if ((int)Time.time % timeInterval == 0 && (int)Time.time != 0)
+        { 
             Debug.Log("spawn planet");
             Instantiate(planet);
         }
