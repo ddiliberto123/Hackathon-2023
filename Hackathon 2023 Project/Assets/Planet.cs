@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
-/**
 public class Planet : MonoBehaviour
 {
     float mass;
@@ -15,6 +14,8 @@ public class Planet : MonoBehaviour
 
     int xBound = 5;
     int yBound = 5;
+    int[] masses = {232,23232,213123,12312};
+    string[] names = { };
 
     void Start()
     {
@@ -22,7 +23,7 @@ public class Planet : MonoBehaviour
         position = new Vector2(UnityEngine.Random.Range((float)-xBound, (float)xBound), UnityEngine.Random.Range((float)-yBound, (float)yBound));
         transform.position = position;
 
-        if (planetName == "Mars")
+         if (planetName == "Mars")
         {
             //set sprite to Mars' sprite
             mass = 100;
@@ -45,10 +46,4 @@ public class Planet : MonoBehaviour
         }
         transform.localScale = new Vector2(radius, radius);
     }
-
-    void Update()
-    {
-        
-    }
 }
-**/
