@@ -1,0 +1,4 @@
+*.meta
+*.preset
+*.asmdef
+*.cs
