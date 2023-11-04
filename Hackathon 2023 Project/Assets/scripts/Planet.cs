@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Planet : MonoBehaviour
 {
-    float mass;
+    public float mass;
     float radius;
     Vector2 position;
     string planetName;

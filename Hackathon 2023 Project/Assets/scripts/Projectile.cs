@@ -1,15 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    Vector2 position;
-    Vector2 velocity;
+    UnityEngine.Vector2 position;
+    UnityEngine.Vector2 velocity;
+    UnityEngine.Vector2 acceleration;
+    UnityEngine.Vector2 force;
+    public float mass;
     public float speed;
     float directon;
     GameObject player;
+
+    //G controls the global strength of gravity
+    float G = 1;
+
+    public GameObject[] planets;
 
     public int xBound;
     public int yBound;
@@ -21,14 +30,25 @@ public class Projectile : MonoBehaviour
 
         //set velocity of projectile using position of player
         directon = Mathf.Atan2(player.transform.position.y, player.transform.position.x);
-        velocity = new Vector2(speed * Mathf.Cos(directon), speed * Mathf.Sin(directon));
+        velocity = new UnityEngine.Vector2(speed * Mathf.Cos(directon), speed * Mathf.Sin(directon));
 
         transform.position = position;
     }
 
     void Update()
     {
-        //increment position using velocity
+        if (planets.Length > 0)
+        {
+            for (int i = 0; i < planets.Length; i++)
+            {
+                force.x = G * mass * planets[i].GetComponent<Planet>().mass / Mathf.Pow(planets[i].transform.position.x - position.x, 2);
+                force.y = G * mass * planets[i].GetComponent<Planet>().mass / Mathf.Pow(planets[i].transform.position.y - position.y, 2);
+            }
+        }
+        acceleration.x = force.x / mass;
+        acceleration.y = force.y / mass;
+        velocity.x = acceleration.x * Time.deltaTime;
+        velocity.y = acceleration.y * Time.deltaTime;
         position.x += velocity.x * Time.deltaTime;
         position.y += velocity.y * Time.deltaTime;
         transform.position = position;
