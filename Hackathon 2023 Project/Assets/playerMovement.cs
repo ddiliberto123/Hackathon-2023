@@ -45,7 +45,7 @@ public class playerMovement : MonoBehaviour
                 break;
         }
         player.transform.position = new Vector2(expandedRadius * Mathf.Cos(theta), expandedRadius * Mathf.Sin(theta));
-        Debug.Log(Input.GetAxis("Horizontal") + ":" + theta + ":");
+        //Debug.Log(Input.GetAxis("Horizontal") + ":" + theta + ":");
 
     }
 }
