@@ -7,7 +7,7 @@ using UnityEngine;
 /**
 public class Planet : MonoBehaviour
 {
-    float mass;
+    public float mass;
     float radius;
     Vector2 position;
     string planetName;
@@ -41,7 +41,7 @@ public class Planet : MonoBehaviour
         else
         {
             mass = 100;
-            radius = 3;
+            radius = 1;
         }
         transform.localScale = new Vector2(radius, radius);
     }
