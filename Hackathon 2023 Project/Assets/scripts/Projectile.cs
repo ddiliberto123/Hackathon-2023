@@ -18,6 +18,7 @@ public class Projectile : MonoBehaviour
     //G controls the global strength of gravity
     float G = 1;
 
+    //list of active planets
     public GameObject[] planets;
 
     public int xBound;
