@@ -39,7 +39,9 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        planets = GetComponent<SpawnPlanets>().activePlanets;
+        //old gravity code
+        /*
+         planets = GetComponent<SpawnPlanets>().activePlanets;
         netForce = new UnityEngine.Vector2(0,0);
         if (planets.Length > 0)
         {
@@ -58,6 +60,7 @@ public class Projectile : MonoBehaviour
         //set velocity and position
         velocity.x += acceleration.x * Time.deltaTime;
         velocity.y += acceleration.y * Time.deltaTime;
+         */
         position.x += velocity.x * Time.deltaTime;
         position.y += velocity.y * Time.deltaTime;
         transform.position = position;
