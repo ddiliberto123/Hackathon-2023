@@ -8,6 +8,8 @@ TagManager:
   - asteroid
   - missile
   - bound
+  - planet
+  - gravity well
   layers:
   - Default
   - TransparentFX

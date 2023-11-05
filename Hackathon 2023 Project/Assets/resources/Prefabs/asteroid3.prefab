@@ -162,5 +162,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bdad9a5b971d474bbc7dc9a9e582a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Earth: {fileID: 0}
+  Earth: {fileID: 9190222025480841047, guid: 69643006b27a11545ba026cd6f7a7183, type: 3}
   asteroidSpeed: 100
