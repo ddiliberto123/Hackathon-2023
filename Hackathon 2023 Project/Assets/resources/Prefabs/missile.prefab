@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.052486714, w: 0.99862164}
   m_LocalPosition: {x: 56.4817, y: 311.9454, z: 0}
-  m_LocalScale: {x: 28.892511, y: 28.456882, z: 28.182745}
+  m_LocalScale: {x: 12, y: 12, z: 12}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -174,4 +174,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mass: 1
   speed: 100
+<<<<<<< HEAD
   gravityZones: []
+=======
+--- !u!114 &1644105287325621581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2176338792934575866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd14350c026b69648b94f87e13654c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 10
+>>>>>>> 63bdc57845c2fe0acb06ebda78cf77ace2f53bb1
