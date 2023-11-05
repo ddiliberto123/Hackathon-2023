@@ -79,6 +79,8 @@ public class Projectile : MonoBehaviour
                 break;
             case "missile":
                 break;
+            case "earth":
+                break;
             default:
                 Destroy(gameObject);
                 break;

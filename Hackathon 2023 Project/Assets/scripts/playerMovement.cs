@@ -11,7 +11,7 @@ public class playerMovement : MonoBehaviour
     public GameObject earth;
     public float radius = 2.5f;
     public float moveSpeed = 5f;
-    public float rotationAngle = 0;
+    float rotationAngle = 0;
     //make sure z is 0
     private Vector3 center;
     private float angle = 20.41114f;
@@ -19,7 +19,7 @@ public class playerMovement : MonoBehaviour
 
     void Start()
     {
-        center = new Vector3(0f, -5f, 0f); // Set the desired initial position
+        center = new Vector3(0f, -195f, 0f); // Set the desired initial position
         transform.position = center;
     }
 
