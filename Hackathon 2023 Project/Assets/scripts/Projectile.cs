@@ -16,11 +16,7 @@ public class Projectile : MonoBehaviour
     float directon;
     GameObject player;
 
-    //Newton's gravitational constant
-    float G = 6.674f * Mathf.Pow(10,-11);
-
     //list of active planets
-    public GameObject[] planets;
 
     public int xBound;
     public int yBound;
@@ -61,6 +57,12 @@ public class Projectile : MonoBehaviour
         velocity.x += acceleration.x * Time.deltaTime;
         velocity.y += acceleration.y * Time.deltaTime;
          */
+
+        netForce = GetComponent<Gravity>().gravitationalForce(mass, position);
+        acceleration.x = netForce.x / mass;
+        acceleration.y = netForce.y / mass;
+        velocity.x += acceleration.x * Time.deltaTime;
+        velocity.y += acceleration.y * Time.deltaTime;
         position.x += velocity.x * Time.deltaTime;
         position.y += velocity.y * Time.deltaTime;
         transform.position = position;
