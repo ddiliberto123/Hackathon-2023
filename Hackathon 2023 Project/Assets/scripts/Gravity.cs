@@ -34,7 +34,7 @@ public class Gravity : MonoBehaviour
             positionObject = collision.gameObject.GetComponent<Projectile>().transform.position;
 
             //apply force to missile
-            collision.gameObject.GetComponent<Projectile>().applyForce(gravitationalForce(massObject, positionObject);
+            //collision.gameObject.GetComponent<Projectile>().applyForce(gravitationalForce(massObject, positionObject);
         }
         if (collision.gameObject.tag == "asteroid")
         {
@@ -43,7 +43,7 @@ public class Gravity : MonoBehaviour
             positionObject = collision.gameObject.GetComponent<Asteroid>().transform.position;
 
             //apply force to asteroid
-            collision.gameObject.GetComponent<Asteroid>().applyForce(gravitationalForce(massObject, positionObject);
+            collision.gameObject.GetComponent<Asteroid>().applyForce(gravitationalForce(massObject, positionObject));
         }
     }
 

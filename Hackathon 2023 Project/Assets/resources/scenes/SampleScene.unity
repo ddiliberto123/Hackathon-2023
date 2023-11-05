@@ -537,6 +537,7 @@ GameObject:
   m_Component:
   - component: {fileID: 697862127}
   - component: {fileID: 697862128}
+  - component: {fileID: 697862129}
   m_Layer: 0
   m_Name: gravityZone (2)
   m_TagString: gravity well
@@ -611,6 +612,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &697862129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697862126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd14350c026b69648b94f87e13654c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 1
 --- !u!1001 &760479254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -856,8 +870,8 @@ MonoBehaviour:
   - {fileID: 8352780280127345028, guid: 3a29bf9bc90f40b41b1b0a387c5bd4e9, type: 3}
   - {fileID: 8697512916261804082, guid: 3025af7a3d54a8240bbcf4e68fcb2d0f, type: 3}
   - {fileID: 2666490774943433412, guid: d1f86719edf5e8b4d8810c632ec10951, type: 3}
-  spawnInterval: 3
-  spawnArea: {x: 500, y: 900}
+  spawnInterval: 1
+  spawnArea: {x: 8, y: 5}
 --- !u!1 &1266907133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,6 +1150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1782485070}
   - component: {fileID: 1782485071}
+  - component: {fileID: 1782485072}
   m_Layer: 0
   m_Name: gravityZone (1)
   m_TagString: gravity well
@@ -1152,9 +1167,9 @@ Transform:
   m_GameObject: {fileID: 1782485069}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.006086411, y: -0.07108833, z: 0}
-  m_LocalScale: {x: 10.191284, y: 10.191284, z: 10.191286}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 696993467}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1199,7 +1214,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ff014c1c1d5a4c44a9c5620b83ddfb38, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 0.47675326, g: 0.5551261, b: 0.5849056, a: 0.03529412}
   m_FlipX: 0
   m_FlipY: 0
@@ -1207,9 +1222,22 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1782485072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782485069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd14350c026b69648b94f87e13654c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 1
 --- !u!1001 &482808091128572456
 PrefabInstance:
   m_ObjectHideFlags: 0
