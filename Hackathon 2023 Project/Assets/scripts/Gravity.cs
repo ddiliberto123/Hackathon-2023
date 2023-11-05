@@ -9,6 +9,10 @@ public class Gravity : MonoBehaviour
 
     public float mass;
     Vector2 position;
+    public float radius;
+
+    float massObject;
+    Vector2 positionObject;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +24,22 @@ public class Gravity : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "missile")
+        {
+            massObject = collision.gameObject.GetComponent<Projectile>().mass;
+            positionObject = collision.gameObject.GetComponent<Projectile>().transform.position;
+            collision.gameObject.GetComponent<Projectile>().applyForce(gravitationalForce(massObject, positionObject);
+        }
+        if (collision.gameObject.tag == "asteroid")
+        {
+            massObject = collision.gameObject.GetComponent<Asteroid>().mass;
+            positionObject = collision.gameObject.GetComponent<Asteroid>().transform.position;
+            collision.gameObject.GetComponent<Asteroid>().applyForce(gravitationalForce(massObject, positionObject);
+        }
     }
 
     //returns gravitational force applied to the object
