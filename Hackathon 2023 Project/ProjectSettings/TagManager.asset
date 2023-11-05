@@ -6,6 +6,7 @@ TagManager:
   tags:
   - earth
   - asteroid
+  - missile
   layers:
   - Default
   - TransparentFX
