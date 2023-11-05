@@ -9,7 +9,6 @@ public class Gravity : MonoBehaviour
 
     public float mass;
     Vector2 position;
-    public float radius;
 
     float massObject;
     Vector2 positionObject;
@@ -30,14 +29,20 @@ public class Gravity : MonoBehaviour
     {
         if (collision.gameObject.tag == "missile")
         {
+            //get mass and position of missile
             massObject = collision.gameObject.GetComponent<Projectile>().mass;
             positionObject = collision.gameObject.GetComponent<Projectile>().transform.position;
+
+            //apply force to missile
             collision.gameObject.GetComponent<Projectile>().applyForce(gravitationalForce(massObject, positionObject);
         }
         if (collision.gameObject.tag == "asteroid")
         {
+            //get mass and position of asteroid
             massObject = collision.gameObject.GetComponent<Asteroid>().mass;
             positionObject = collision.gameObject.GetComponent<Asteroid>().transform.position;
+
+            //apply force to asteroid
             collision.gameObject.GetComponent<Asteroid>().applyForce(gravitationalForce(massObject, positionObject);
         }
     }
