@@ -13,6 +13,7 @@ public class Asteroid : MonoBehaviour
     public float mass = 1f;
 
     Vector2 netforce;
+    Vector2 acceleration;
 
     void Start()
     {
@@ -29,8 +30,13 @@ public class Asteroid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, Earth.transform.position, asteroidSpeed * Time.deltaTime);
+        // F=ma
+        acceleration = netforce/mass;
 
+        asteroidSpeed += acceleration.magnitude;
+
+        transform.position = Vector2.MoveTowards(transform.position, Earth.transform.position, asteroidSpeed * Time.deltaTime);
+        netforce = Vector2.zero;
     }
 
     // OnCollisionEnter2D is called when a collision occurs
