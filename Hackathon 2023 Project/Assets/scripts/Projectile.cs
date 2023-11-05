@@ -73,7 +73,6 @@ public class Projectile : MonoBehaviour
     {
         switch (collision.gameObject.tag)
         {
-            
             case "asteroid":
                 Destroy(gameObject);
                 Destroy(collision.gameObject);

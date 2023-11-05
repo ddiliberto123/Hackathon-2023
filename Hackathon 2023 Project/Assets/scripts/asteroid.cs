@@ -28,11 +28,20 @@ public class Asteroid : MonoBehaviour
     // OnCollisionEnter2D is called when a collision occurs
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("collision!");
-        // Check if the collision is with an object tagged as "earth"
-        if (collision.gameObject.CompareTag("earth"))
+        switch (collision.gameObject.tag)
         {
-            Destroy(Earth);
+            case "planet":
+                Destroy(gameObject);
+                break;
+            case "earth":
+                Destroy(gameObject);
+                Destroy(collision.gameObject);
+                //Stage change
+                break;
+            default:
+                Destroy(gameObject);
+                Destroy(collision.gameObject);
+                break;
 
         }
     }
