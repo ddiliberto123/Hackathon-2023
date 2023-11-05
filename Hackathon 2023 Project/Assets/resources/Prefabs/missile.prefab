@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1444433204758660989}
   - component: {fileID: 4055534619249195637}
   - component: {fileID: 839221014988090807}
+  - component: {fileID: 5396495946070054925}
   m_Layer: 0
   m_Name: missile
   m_TagString: missile
@@ -28,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 2176338792934575866}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.052486714, w: 0.99862164}
-  m_LocalPosition: {x: 57, y: 312, z: 0}
-  m_LocalScale: {x: 29.125517, y: 28.456882, z: 28.182745}
+  m_LocalPosition: {x: 56.4817, y: 311.9454, z: 0}
+  m_LocalScale: {x: 28.892511, y: 28.456882, z: 28.182745}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -147,7 +148,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.1, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -157,5 +158,22 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 4.5, y: 4.5}
+  m_Size: {x: 1.4, y: 4}
   m_EdgeRadius: 0
+--- !u!114 &5396495946070054925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2176338792934575866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed619f45d3bf82543be32a5f5d9efb46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 10
+  speed: 2
+  planets: []
+  xBound: 1
+  yBound: 0
