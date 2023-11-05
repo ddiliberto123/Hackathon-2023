@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4055534619249195637}
   - component: {fileID: 839221014988090807}
   - component: {fileID: 5396495946070054925}
+  - component: {fileID: 1644105287325621581}
   m_Layer: 0
   m_Name: missile
   m_TagString: missile
@@ -102,7 +103,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -173,7 +174,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mass: 10
-  speed: 2
-  planets: []
-  xBound: 1
-  yBound: 0
+  speed: 100
+  xBound: 10
+  yBound: 10
+--- !u!114 &1644105287325621581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2176338792934575866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd14350c026b69648b94f87e13654c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 10

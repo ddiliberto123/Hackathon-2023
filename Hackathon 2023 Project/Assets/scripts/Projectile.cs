@@ -18,8 +18,8 @@ public class Projectile : MonoBehaviour
 
     //list of active planets
 
-    public int xBound;
-    public int yBound;
+    //public int xBound;
+    //public int yBound;
 
     void Start()
     {
@@ -58,7 +58,7 @@ public class Projectile : MonoBehaviour
         velocity.y += acceleration.y * Time.deltaTime;
          */
 
-        netForce = GetComponent<Gravity>().gravitationalForce(mass, position);
+        //netForce = GetComponent<Gravity>().gravitationalForce(mass, position);
         acceleration.x = netForce.x / mass;
         acceleration.y = netForce.y / mass;
         velocity.x += acceleration.x * Time.deltaTime;
@@ -67,10 +67,25 @@ public class Projectile : MonoBehaviour
         position.y += velocity.y * Time.deltaTime;
         transform.position = position;
 
-        //destroy projectile if out of bounds
-        if (position.x > xBound || position.x < -xBound || position.y > yBound || position.y < -yBound)
+
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        switch (collision.gameObject.tag)
         {
-            Object.Destroy(gameObject);
+            
+            case "asteroid":
+                Destroy(gameObject);
+                Destroy(collision.gameObject);
+                break;
+            case "missile":
+                break;
+            default:
+                Destroy(gameObject);
+                break;
         }
+
+        Debug.Log("collision!");
+        // Check if the collision is with an object tagged as "earth"
     }
 }
