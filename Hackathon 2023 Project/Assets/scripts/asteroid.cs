@@ -10,10 +10,6 @@ public class Asteroid : MonoBehaviour
     public GameObject Earth;
     private Rigidbody2D rb;
     public float asteroidSpeed = 5.0f;
-    public float mass = 1f;
-
-    Vector2 netforce;
-    Vector2 acceleration;
 
     void Start()
     {
@@ -22,21 +18,11 @@ public class Asteroid : MonoBehaviour
         
     }
 
-    public void applyForce(Vector2 force)
-    {
-        netforce += force;
-    }
-
     // Update is called once per frame
     void Update()
     {
-        // F=ma
-        acceleration = netforce/mass;
-
-        asteroidSpeed += acceleration.magnitude;
-
         transform.position = Vector2.MoveTowards(transform.position, Earth.transform.position, asteroidSpeed * Time.deltaTime);
-        netforce = Vector2.zero;
+
     }
 
     // OnCollisionEnter2D is called when a collision occurs
