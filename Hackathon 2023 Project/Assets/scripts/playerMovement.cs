@@ -29,7 +29,7 @@ public class playerMovement : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
 
         angle -= horizontalInput * moveSpeed * Time.deltaTime;
-
+        
         // Constrain the angle within the specified range.
         angle = Mathf.Clamp(angle, 19.3f, 21.5f);
 
@@ -42,7 +42,8 @@ public class playerMovement : MonoBehaviour
         transform.position = newPosition;
 
         // Calculate the z-rotation based on the movement angle.
-        rotationAngle = angle / Mathf.Rad2Deg;
+        rotationAngle = angle * Mathf.Rad2Deg + 270;
         transform.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
-    }
+        Debug.Log(rotationAngle + ":" + angle + ":");
+    }   
 }
