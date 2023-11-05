@@ -10,12 +10,20 @@ public class Asteroid : MonoBehaviour
     public GameObject Earth;
     private Rigidbody2D rb;
     public float asteroidSpeed = 5.0f;
+    public float mass = 1f;
+
+    Vector2 netforce;
 
     void Start()
     {
         //To set rigid body
         rb = GetComponent<Rigidbody2D>();
         
+    }
+
+    public void applyForce(Vector2 force)
+    {
+        netforce += force;
     }
 
     // Update is called once per frame
