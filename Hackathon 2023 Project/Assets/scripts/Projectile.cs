@@ -15,15 +15,16 @@ public class Projectile : MonoBehaviour
     public float speed;
     float directon;
     GameObject player;
-
-    //list of active planets
-
-    //public int xBound;
-    //public int yBound;
+    GameObject[] gravityZones;
 
     void Start()
     {
         player = GameObject.Find("Player");
+
+        //set list of gravity zones
+        gravityZones = GameObject.FindGameObjectsWithTag("gravity well");
+        Debug.Log("graity zones: " + gravityZones.Length);
+
         position = player.transform.position;
 
         //set velocity of projectile using position of player
@@ -35,32 +36,17 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        //old gravity code
-        /*
-         planets = GetComponent<SpawnPlanets>().activePlanets;
-        netForce = new UnityEngine.Vector2(0,0);
-        if (planets.Length > 0)
+        //add gravitational force from each gravity zone
+        netForce = UnityEngine.Vector2.zero;
+        for (int i = 0; i < gravityZones.Length; i++)
         {
-            //iterate over list of planets and apply gravitational force from each to the projectile using Newton's law of gravity
-            for (int i = 0; i < planets.Length; i++)
-            {
-                netForce.x += G * mass * planets[i].GetComponent<Planet>().mass / Mathf.Pow(planets[i].transform.position.x - position.x, 2);
-                netForce.y += G * mass * planets[i].GetComponent<Planet>().mass / Mathf.Pow(planets[i].transform.position.y - position.y, 2);
-            }
+            netForce += gravityZones[i].GetComponent<Gravity>().gravitationalForce(mass, position);
         }
 
-        //set acceleration using F=ma
-        acceleration.x = -netForce.x / mass;
-        acceleration.y = -netForce.y / mass;
-
-        //set velocity and position
-        velocity.x += acceleration.x * Time.deltaTime;
-        velocity.y += acceleration.y * Time.deltaTime;
-         */
-
-        //netForce = GetComponent<Gravity>().gravitationalForce(mass, position);
+        //use f=ma to calculate acceleration
         acceleration.x = netForce.x / mass;
         acceleration.y = netForce.y / mass;
+
         velocity.x += acceleration.x * Time.deltaTime;
         velocity.y += acceleration.y * Time.deltaTime;
         position.x += velocity.x * Time.deltaTime;

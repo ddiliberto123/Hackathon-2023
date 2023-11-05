@@ -10,6 +10,7 @@ TagManager:
   - bound
   - planet
   - gravity well
+  - tes
   layers:
   - Default
   - TransparentFX

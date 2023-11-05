@@ -9,20 +9,38 @@ public class Asteroid : MonoBehaviour
 {
     public GameObject Earth;
     private Rigidbody2D rb;
-    public float asteroidSpeed = 5.0f;
+    public float mass = 1f;
+    public float startSpeed = 1f;
+
+    Vector2 netforce;
+    Vector2 acceleration;
+    Vector2 velocity;
+    Vector2 position;
+    float direction;
 
     void Start()
     {
         //To set rigid body
         rb = GetComponent<Rigidbody2D>();
-        
+        direction = Mathf.Atan2(Earth.transform.position.y - position.y, Earth.transform.position.x - position.x);
+        velocity = new Vector2(startSpeed * Mathf.Cos(direction), startSpeed * Mathf.Sin(direction));
+    }
+
+    public void applyForce(Vector2 force)
+    {
+        netforce += force;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, Earth.transform.position, asteroidSpeed * Time.deltaTime);
+        // F=ma
+        acceleration = netforce / mass;
 
+        //velocity += acceleration;
+        position += velocity * Time.deltaTime;
+        transform.position = position;
+        netforce = Vector2.zero;
     }
 
     // OnCollisionEnter2D is called when a collision occurs
