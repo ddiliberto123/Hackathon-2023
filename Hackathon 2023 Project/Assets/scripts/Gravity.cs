@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Gravity : MonoBehaviour
 {
-    float G = 6.674f * Mathf.Pow(10, -11);
+    float G = 1;
     Vector2 force;
 
     public float mass;
@@ -13,7 +13,7 @@ public class Gravity : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        position = transform.position;
+        position = GetComponentInParent<Transform>().position;
     }
 
     // Update is called once per frame
@@ -25,8 +25,8 @@ public class Gravity : MonoBehaviour
     //returns gravitational force applied to the object
     public Vector2 gravitationalForce(float massObject,Vector2 positionObject)
     {
-        force.x = G*massObject*mass/Mathf.Pow(positionObject.x-position.x,2);
-        force.y = G * massObject * mass / Mathf.Pow(positionObject.y - position.y, 2);
+        force.x = -G * massObject * mass / Mathf.Pow(positionObject.x - position.x, 2);
+        force.y = -G * massObject * mass / Mathf.Pow(positionObject.y - position.y, 2);
         return new Vector2(force.x, force.y);
     }
 }

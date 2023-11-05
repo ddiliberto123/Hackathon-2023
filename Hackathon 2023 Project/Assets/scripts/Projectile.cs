@@ -15,6 +15,7 @@ public class Projectile : MonoBehaviour
     public float speed;
     float directon;
     GameObject player;
+    public GameObject[] gravityZones;
 
     //list of active planets
 
@@ -26,6 +27,9 @@ public class Projectile : MonoBehaviour
         player = GameObject.Find("Player");
         position = player.transform.position;
 
+        gravityZones = GameObject.FindGameObjectsWithTag("gravity zone");
+        Debug.Log(gravityZones.Length);
+
         //set velocity of projectile using position of player
         directon = Mathf.Atan2(player.transform.position.y, player.transform.position.x);
         velocity = new UnityEngine.Vector2(speed * Mathf.Cos(directon), speed * Mathf.Sin(directon));
@@ -35,30 +39,11 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        //old gravity code
-        /*
-         planets = GetComponent<SpawnPlanets>().activePlanets;
-        netForce = new UnityEngine.Vector2(0,0);
-        if (planets.Length > 0)
+        netForce = UnityEngine.Vector2.zero;
+        for (int i = 0; i < gravityZones.Length; i++)
         {
-            //iterate over list of planets and apply gravitational force from each to the projectile using Newton's law of gravity
-            for (int i = 0; i < planets.Length; i++)
-            {
-                netForce.x += G * mass * planets[i].GetComponent<Planet>().mass / Mathf.Pow(planets[i].transform.position.x - position.x, 2);
-                netForce.y += G * mass * planets[i].GetComponent<Planet>().mass / Mathf.Pow(planets[i].transform.position.y - position.y, 2);
-            }
+            netForce += gravityZones[i].GetComponent<Gravity>().gravitationalForce(mass, position);
         }
-
-        //set acceleration using F=ma
-        acceleration.x = -netForce.x / mass;
-        acceleration.y = -netForce.y / mass;
-
-        //set velocity and position
-        velocity.x += acceleration.x * Time.deltaTime;
-        velocity.y += acceleration.y * Time.deltaTime;
-         */
-
-        //netForce = GetComponent<Gravity>().gravitationalForce(mass, position);
         acceleration.x = netForce.x / mass;
         acceleration.y = netForce.y / mass;
         velocity.x += acceleration.x * Time.deltaTime;
