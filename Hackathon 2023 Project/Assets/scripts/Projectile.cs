@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
@@ -38,6 +39,7 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
+        planets = GetComponent<SpawnPlanets>().activePlanets;
         netForce = new UnityEngine.Vector2(0,0);
         if (planets.Length > 0)
         {
@@ -50,8 +52,8 @@ public class Projectile : MonoBehaviour
         }
 
         //set acceleration using F=ma
-        acceleration.x = netForce.x / mass;
-        acceleration.y = netForce.y / mass;
+        acceleration.x = -netForce.x / mass;
+        acceleration.y = -netForce.y / mass;
 
         //set velocity and position
         velocity.x += acceleration.x * Time.deltaTime;
