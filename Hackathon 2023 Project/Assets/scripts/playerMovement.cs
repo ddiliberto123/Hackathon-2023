@@ -19,7 +19,15 @@ public class playerMovement : MonoBehaviour
 
     void Start()
     {
-        center = new Vector3(0f, -195f, 0f); // Set the desired initial position
+
+        // Get the initial position of the earth
+        Vector3 position = earth.transform.position;
+
+        // Extract the X and Y coordinates
+        float xPosition = position.x;
+        float yPosition = position.y;
+
+        center = new Vector3(xPosition, ((yPosition + yPosition * -1) + 10), 0f); // Set the desired initial position
         transform.position = center;
     }
 
@@ -42,7 +50,11 @@ public class playerMovement : MonoBehaviour
         transform.position = newPosition;
 
         // Calculate the z-rotation based on the movement angle.
+// Updated upstream
         rotationAngle = angle * Mathf.Rad2Deg + 270;
+//
+        rotationAngle = angle * Mathf.Rad2Deg;
+//Stashed changes
         transform.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
         Debug.Log(rotationAngle + ":" + angle + ":");
     }   

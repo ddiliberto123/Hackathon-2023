@@ -8,7 +8,7 @@ public class AsteroidSpawner : MonoBehaviour
     //speed for spawning
     public float spawnInterval = 1.0f;
     // spawn area  
-    public Vector2 spawnArea = new Vector2(8.0f, 5.0f);
+    public Vector2 spawnArea = new Vector2(327.0f, 826.0f);
     //use to check 
     private float timeSinceLastSpawn = 0;
 
@@ -26,7 +26,7 @@ public class AsteroidSpawner : MonoBehaviour
     void SpawnAsteroid()
     {
         //creating the random position
-        Vector2 spawnPosition = new Vector2(Random.Range(-spawnArea.x, spawnArea.x), Random.Range(spawnArea.y, spawnArea.y+5));
+        Vector2 spawnPosition = new Vector2(Random.Range(-spawnArea.x, spawnArea.x), Random.Range(spawnArea.y, spawnArea.y/4));
 
         int randomIndex = Random.Range(0, asteroid.Length);
 
